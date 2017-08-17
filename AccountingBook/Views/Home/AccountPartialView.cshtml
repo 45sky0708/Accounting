@@ -1,8 +1,15 @@
-﻿@model  List<AccountingBook.Models.AccountingViewModel>
+﻿@using PagedList
+@model  IPagedList<AccountingBook.ViewModels.AccountingViewModel>
 
 @{ 
     var i = 1;
 }
+
+@section styles
+{
+    <link href="~/Content/PagedList.css" rel="stylesheet" />
+}
+
 <div class="col-md-12">
     <table class="table">
         <tr>
@@ -16,6 +23,7 @@
         {
             <tr>
                 <td>
+                    @*@(++i) 可以解決0的問題*@
                     @(i++)
                 </td>
                 <td>
@@ -31,4 +39,5 @@
         }
 
     </table>
+    @Html.PagedListPager(Model, page => Url.Action("index", new { page }))
 </div>

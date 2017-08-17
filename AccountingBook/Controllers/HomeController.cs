@@ -1,4 +1,7 @@
 ﻿using AccountingBook.Models;
+using AccountingBook.Repositories;
+using AccountingBook.Service;
+using PagedList;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,17 +12,25 @@ namespace AccountingBook.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        private readonly AccountService _accountSvc;
+
+        private int pageSize = 10;
+
+        public HomeController()
         {
-            List<AccountingViewModel> AccountData = new List<AccountingViewModel>
-            {
-                new AccountingViewModel() {Category = "支出", Date = new DateTime(2017,8,5), Amount = 100 },
-                new AccountingViewModel() {Category = "收入", Date = new DateTime(2017,8,6), Amount = 250 },
-                new AccountingViewModel() {Category = "支出", Date = new DateTime(2017,8,7), Amount = 300 },
-                new AccountingViewModel() {Category = "收入", Date = new DateTime(2017,8,8), Amount = 450 },
-                new AccountingViewModel() {Category = "支出", Date = new DateTime(2017,8,9), Amount = 600 }
-            };
-            return View(AccountData);
+            var unitOfWork = new EFUnitOfWork();
+            _accountSvc = new AccountService(unitOfWork);
+        }
+
+        public ActionResult Index(int page = 1)
+        {
+            int currentPage = page < 1 ? 1 : page; 
+
+            var source = _accountSvc.Lookup();
+
+            var result = source.OrderBy(x => x.Date).ToPagedList(currentPage, pageSize);
+
+            return View(result);
         }
 
         public ActionResult AccountPartialView()
