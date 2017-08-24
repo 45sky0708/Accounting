@@ -23,14 +23,13 @@
         {
             <tr>
                 <td>
-                    @*@(++i) 可以解決0的問題*@
-                    @(i++)
+                    @(++i)
                 </td>
-                <td>
+                <td style='color: @(item.Category == AccountingBook.ViewModels.Category.Income ? "blue" : "red");'>
                     @item.Category
                 </td>
                 <td>
-                    @item.Date.ToShortDateString()
+                    @item.Date
                 </td>
                 <td>
                     @item.Amount

@@ -43,7 +43,7 @@ namespace AccountingBook.Repositories
             return ObjectSet.SingleOrDefault(filter);
         }
 
-        public void Create(T entity)
+        public void Add(T entity)
         {
             ObjectSet.Add(entity);
         }

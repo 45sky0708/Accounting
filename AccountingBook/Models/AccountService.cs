@@ -25,11 +25,29 @@ namespace AccountingBook.Service
             var source = _accountRep.LookupAll();
             var result = source.Select(x => new AccountingViewModel()
             {
-                Category = x.Categoryyy == 0 ? "收入" : "支出",
+                Category = (Category)x.Categoryyy,
                 Amount = x.Amounttt,
                 Date = x.Dateee                 
             }).ToList();
             return result;
-        }        
+        }
+
+        public void Add(AccountingViewModel AccountVM)
+        {
+            var result = new AccountBook()
+            {
+                Id = Guid.NewGuid(),
+                Categoryyy = Convert.ToInt32(AccountVM.Category),
+                Amounttt = AccountVM.Amount,
+                Dateee = AccountVM.Date,
+                Remarkkk = AccountVM.Remark
+            };
+            _accountRep.Add(result);
+        }
+
+        public void Save()
+        {
+            _unitOfWork.Save();
+        }
     }
 }

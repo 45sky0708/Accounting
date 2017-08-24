@@ -22,7 +22,7 @@ namespace AccountingBook.Repositories
         /// 新增一個entity
         /// </summary>
         /// <param name="entity"></param>
-        void Create(T entity);
+        void Add(T entity);
         /// <summary>
         /// 刪除單一entity
         /// </summary>
