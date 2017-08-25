@@ -2,7 +2,7 @@
 @model  IPagedList<AccountingBook.ViewModels.AccountingViewModel>
 
 @{ 
-    var i = 1;
+    var i = 0;
 }
 
 @section styles
@@ -26,7 +26,7 @@
                     @(++i)
                 </td>
                 <td style='color: @(item.Category == AccountingBook.ViewModels.Category.Income ? "blue" : "red");'>
-                    @item.Category
+                    @AccountingBook.Helper.EnumExtensions.GetDisplayName(item.Category)
                 </td>
                 <td>
                     @item.Date

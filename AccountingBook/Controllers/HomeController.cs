@@ -47,11 +47,7 @@ namespace AccountingBook.Controllers
 
                 return RedirectToAction("Index");
             }
-            int currentPage = page < 1 ? 1 : page;
-
-            var result = _accountSvc.Lookup().OrderBy(x => x.Date).ToPagedList(currentPage, pageSize);
-
-            return PartialView(result);
+            return View(AccountVM);
         }
 
         public ActionResult About()

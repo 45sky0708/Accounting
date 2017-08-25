@@ -144,6 +144,9 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
+    <Reference Include="Validate, Version=1.0.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Validate.1.0.3\lib\net452\Validate.dll</HintPath>
+    </Reference>
     <Reference Include="WebGrease">
       <Private>True</Private>
       <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
@@ -167,6 +170,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helper\EnumExtensions.cs" />
     <Compile Include="Models\Account.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -256,6 +260,7 @@
     <Content Include="Views\Home\AccountPartialView.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Views\EnumExtensions\" />
     <Folder Include="Views\Validate\" />
   </ItemGroup>
   <ItemGroup>

@@ -22,12 +22,12 @@ namespace AccountingBook.ViewModels
 
         [Display(Name = "金額")]
         [Required(ErrorMessage = "{0}為必填欄位")]
-        [Range(1, Int32.MaxValue, ErrorMessage = "{}只能是正整數")]
+        [Range(1, Int32.MaxValue, ErrorMessage = "{0}只能是正整數")]
         public int Amount { get; set; }
 
         [Display(Name = "備註")]
         [Required(ErrorMessage = "{0}為必填欄位")]
-        [StringLength(100, ErrorMessage = "{0}不能超過{}個字")]
+        [StringLength(100, ErrorMessage = "{0}不能超過{1}個字")]
         public string Remark { get; set; }
     }
 
